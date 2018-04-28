@@ -10,4 +10,12 @@ router.get('/login', function(req, res, next) {
     res.render('login');
 });
 
+router.get('/preferences', function(req, res, next) {
+    res.render('preferences');
+});
+
+router.get('/newPoll', function(req, res, next) {
+    res.render('newPoll');
+});
+
 module.exports = router;
