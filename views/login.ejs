@@ -82,13 +82,13 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="email" id="email" placeholder="E-mail address">
+            <input type="text" id="email" placeholder="E-mail address">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password" id="password" placeholder="Password">
+            <input type="password" id="password" placeholder="Password">
           </div>
         </div>
         <div class="ui fluid large teal submit button" id="login_button">Login</div>
@@ -97,21 +97,90 @@
               $( "#login_button" ).click(function() {
                   firebase.auth().signInWithEmailAndPassword($("#email").val(), $("#password").val()).catch(function(error) {
                       // Handle Errors here
-                      if(error.code != null) {
+                      console.log(error.code)
+                      if(error.code == null) {
+
+                      }
+                      else{
                           alert(error.message);
                       }
                       // ...
                   });
               });
+
           </script>
       </div>
 
       <div class="ui error message"></div>
 
-    </form>
+
+
+      <div class="ui modal" id="newuser">
+          <div class="ui middle aligned center aligned grid">
+              <div class="column">
+                  <h2 class="ui teal image header">
+                      <div class="content">
+                          Create new account
+                      </div>
+                      <form class="ui large form">
+                          <div class="ui stacked segment">
+                              <div class="field">
+                                  <div class="ui left icon input">
+                                      <i class="user icon"></i>
+                                      <input type="text" id="email2" placeholder="E-mail address">
+                                  </div>
+                              </div>
+                              <div class="field">
+                                  <div class="ui left icon input">
+                                      <i class="lock icon"></i>
+                                      <input type="password" id="password2" placeholder="Password">
+                                  </div>
+                              </div>
+                              <div class="field">
+                                  <div class="ui left icon input">
+                                      <i class="lock icon"></i>
+                                      <input type="password" id="retypepassword2" placeholder="Password">
+                                  </div>
+                              </div>
+                              <div class="ui fluid large teal button" id="create_account">Create Account</div>
+                              <script>
+                                  // language=JQuery-CSS
+                                  $('#create_account').click(function(){
+                                      console.log($('#email2').val(), $('#password2').val(), $('#retypepassword2').val())
+                                      if($('#password2').val() === $('#retypepassword2').val()){
+                                          firebase.auth().createUserWithEmailAndPassword($('#email2').val(), $('#password2').val()).catch(function(error) {
+                                              // Handle Errors here.
+                                              if(error.code == null) {
+                                                  $('#newuser').modal('hide');
+                                              }
+                                              else{
+                                                  alert(error.message);
+                                              }
+                                              // ...
+                                          });
+                                      }
+                                  });
+
+                              </script>
+                          </div>
+
+                          <div class="ui error message"></div>
+
+
+                  </h2>
+              </div>
+          </div>
+      </div>
+
+      <script>
+          function newuser(){
+              console.log('clicked');
+              $('#newuser').modal('show');
+          }
+      </script>
 
     <div class="ui message">
-      New to us? <a href="#">Sign Up</a>
+      New to us? <a onclick="newuser();">Sign Up</a>
     </div>
   </div>
 </div>
