@@ -9,7 +9,7 @@
   <!-- Site Properties -->
   <title>Login Example - Semantic</title>
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-    <script src="../public/javascripts/firebaseauth.js"></script>
+    <script src="/javascripts/firebaseauth.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -82,23 +82,27 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="email" placeholder="E-mail address">
+            <input type="text" name="email" id="email" placeholder="E-mail address">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="password" id="password" placeholder="Password">
           </div>
         </div>
-        <div class="ui fluid large teal submit button" id="'login_button">Login</div>
-          <script type="text/javascript">
-
-              $("#login_button").click(function(){
-                  console.log('Clicked');
-                  // Why page reloading here ?...
+        <div class="ui fluid large teal submit button" id="login_button">Login</div>
+          <script>
+              // language=JQuery-CSS
+              $( "#login_button" ).click(function() {
+                  firebase.auth().signInWithEmailAndPassword($("#email").val(), $("#password").val()).catch(function(error) {
+                      // Handle Errors here
+                      var errorCode = error.code;
+                      var errorMessage = error.message;
+                      console.log(errorCode, errorMessage)
+                      // ...
+                  };
               });
-
           </script>
       </div>
 
