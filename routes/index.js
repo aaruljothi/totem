@@ -7,7 +7,7 @@ var User = mongoose.model('User');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('index', { title: 'Express' });
+    res.render('postblock', { title: 'Express' });
 });
 
 router.get('/landing', function (req, res, next) {

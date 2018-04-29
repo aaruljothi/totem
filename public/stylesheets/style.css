@@ -23,6 +23,15 @@ a {
   color: var(--blue-custom);
 }
 
+/*.card {*/
+  /*margin-bottom: 20px !important;*/
+  /*padding-bottom: 20px !important;*/
+/*}*/
+
+/*.image {*/
+  /*margin-bottom: 20px !important;*/
+/*}*/
+
 
 body > .grid {
   height: 100%;

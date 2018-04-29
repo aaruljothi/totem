@@ -87,7 +87,7 @@ function getPollByUsername(username, cb) {
     })
 }
 
-function getPoll(cb) {
+function getPolls(cb) {
     $.ajax({
         type: "GET",
         url: "/posts",

@@ -9,47 +9,72 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+    <script src="/javascripts/api.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
+
 <div class="ui grid stackable container" id="feed">
     <div class="eight wide centered column" id="column2"></div>
     <div class="eight wide centered column" id="column3"></div>
-    <script>
-        $(document).ready(function () {
-
-            getPosts(function (posts) {
-
-               for(post in posts){
-
-                   var temphtml ='';
-                   for(opt in posts[post].voteOptions){
-
-                       temphtml = temphtml + '<div class="item" data-value=' + opt + '>' + posts[post].voteOptions[opt] + '</div>'
-                   }
-
-                   if (post%2 === 0){
-                       $('#column2').append('<div class="ui card centered column fluid"><div class="image"><img src="/images/square-image.png"></div><div class="content"><a class="header">'+ posts[post].title +'</a><div class="meta"><span class="date">' + posts[post].timestamp + '</span></div><div class="description">' + posts[post].tags + '</div></div><div class="extra content"><div class="ui selection dropdown"><input type="hidden" name="options"><i class="dropdown icon"></i><div class="default text">Options</div><div class="menu">' + temphtml + '</div></div></div></div>')
-                   }
-                   else
-                   {
-                       $('#column3').append('<div class="ui card centered column fluid"><div class="image"><img src="/images/square-image.png"></div><div class="content"><a class="header">'+ posts[post].title +'</a><div class="meta"><span class="date">' + posts[post].timestamp + '</span></div><div class="description">' + posts[post].tags + '</div></div><div class="extra content"><div class="ui selection dropdown"><input type="hidden" name="options"><i class="dropdown icon"></i><div class="default text">Options</div><div class="menu">' + temphtml + '</div></div></div></div>')
-                   }
-
-               }
-
-
-                $('.ui.dropdown').change(function () {
-                    console.log($(this).find(":selected").val())
-                    });
-            });
-        });
-    </script>
 </div>
 
+<script>
+    var colors = [
+    '#027BBC',
+    'rgb(214, 173, 8)',
+    '#970101',
+    '#27946A',
+    '#EAEBEF',]
+
+    var images = ['/images/images.jpeg', '/images/images.png', '/images/images-2.jpeg', '/images/images-3.jpeg']
+    $(document).ready(function () {
+
+        getPolls(function (posts) {
+            // console.log(posts)
+            var colorid = 0;
+            for(post in posts){
+                // console.log(post);
+
+
+                var temphtml ='';
+                console.log(posts[post].voteOptions);
+                var tpost = posts[post];
+                for(opt in posts[post].voteOptions){
+                    console.log(opt);
+                    temphtml = temphtml + '<div class="item" data-value=' + opt + '>' + posts[post].voteOptions[opt] + '</div>'
+                }
 
 
 
+                if (post%2 === 0){
+                    $('#column2').append('<div class="ui card centered column fluid mag-top" style="background: '+ colors[colorid]+' !important; "><div class="image"><img src="/images/square-image.png"></div><div class="content"><a class="header">'+ posts[post].title +'</a><div class="meta"><span class="date">' + posts[post].timestamp + '</span></div><div class="description">' + posts[post].tags + '</div></div><div class="extra content"><div class="ui selection dropdown"><input type="hidden" name="options"><i class="dropdown icon"></i><div class="default text">Options</div><div class="menu">' + temphtml + '</div></div></div></div>')
+                }
+                else
+                {
+                    $('#column3').append('<div class="ui card centered column fluid mag-top" style="background: '+ colors[colorid]+' !important; "><div class="image"><img src="/images/square-image.png"></div><div class="content"><a class="header">'+ posts[post].title +'</a><div class="meta"><span class="date">' + posts[post].timestamp + '</span></div><div class="description">' + posts[post].tags + '</div></div><div class="extra content"><div class="ui selection dropdown"><input type="hidden" name="options"><i class="dropdown icon"></i><div class="default text">Options</div><div class="menu">' + temphtml + '</div></div></div></div>')
+                }
+                colorid = colorid+1;
+                if (colorid == 5){
+                    colorid =0;
+                }
 
-    <script src="/javascripts/api.js"></script>
+            }
+            $('.ui.dropdown').dropdown();
+            firelater();
+        });
+
+        function firelater(){
+            console.log('hello');
+            $('.ui.dropdown').change(function(){
+                console.log($(this));
+            })
+        }
+
+
+    });
+</script>
+<% include navbar.ejs %>
 </body>
+
 </html>
