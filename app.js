@@ -6,8 +6,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
 
 
 var app = express();
@@ -17,6 +16,9 @@ mongoose.connect('mongodb://heroku_wdbks0cm:u3m8jlmvo1a07oq2t6jcon1bot@ds161459.
 require('./models/Users');
 require('./models/Posts');
 require('./models/Comments');
+
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

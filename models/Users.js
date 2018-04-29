@@ -1,13 +1,15 @@
 var mongoose = require('mongoose');
 
 var UserSchema = new mongoose.Schema({
-    email: {type: String, lowercase: true, unique: true, index=true},
+    username: {type: String, lowercase: true, unique: true, index: true},
+    email: String, 
     age: Number,
     gender: String,
     zipcode: String,
     country: {type: String, default: 'US'},
-    interests: String,
-    votes: [{type: mongoose.Schema.Types.ObjectId, ref:'Vote'}]
+    interests: String
+    // votes: [String]
+    // votes: [{type: mongoose.Schema.Types.ObjectId, ref:'Vote'}]
 });
 
 UserSchema.methods.getAnalytics = function(){
@@ -20,5 +22,13 @@ UserSchema.methods.getAnalytics = function(){
     analytics = analytics.join(',')
     return analytics;
 }
+
+UserSchema.static('findByName', function(name){
+    return this.find({username: name});
+})
+
+// UserSchema.updateVotes = function(VoteId){
+//     this.votes.append(VoteId);
+// }
 
 mongoose.model('User', UserSchema);

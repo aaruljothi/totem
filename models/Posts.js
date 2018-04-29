@@ -1,14 +1,22 @@
 var mongoose = require('mongoose');
 
 var PostSchema = new mongoose.Schema({
-    author: {type: mongoose.Schema.Types.ObjectId, ref: 'User', index=true},
+    author: {type: String, index: true},
     title: String, 
     doc: {type: String, default: ''},
     docType: {type: String, default: ''},
     voteOptions: String, 
-    tags: {type: [String], index=true}, 
+    tags: {type: [String], index: true}, 
     timestamp: String, 
     analytics: {type: String, default: ''}
+});
+
+PostSchema.static('findByAuthor', function(fauthor){
+    return this.find({author:fauthor});
+});
+
+PostSchema.static('findByTags', function(tag){
+    return this.find({tags:tag});
 });
 
 PostSchema.methods.getAnalytics = function(){
