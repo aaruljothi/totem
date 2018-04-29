@@ -12,4 +12,8 @@ CommentSchema.static('findByPost', function(postid){
     return this.find({post:postid});
 })
 
+CommentSchema.static('findByAuthor', function(authorname){
+    return this.find({author:authorname});
+})
+
 mongoose.model('Comment', CommentSchema);
