@@ -43,6 +43,13 @@ function addnewuser(user, age, gender) {
     });
 }
 
+function isUserLoggedIn(){
+    var user = firebase.auth().currentUser;
+
+    return !!user;
+}
+
+
 function dummytest(user, age, gender) {
     var userobject = {
         'username': 'G7fRT3D22HQ',
