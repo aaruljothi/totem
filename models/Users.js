@@ -23,9 +23,18 @@ UserSchema.methods.getAnalytics = function(){
     return analytics;
 }
 
+UserSchema.methods.updateInterests = function(interests, cb){
+    if (this.interests == ""){
+        this.interests = interests;
+    }else{
+        this.interests = this.interests + interests; 
+    }
+    this.save(cb);
+}
+
 UserSchema.static('findByName', function(name){
     return this.find({username: name});
-})
+});
 
 // UserSchema.updateVotes = function(VoteId){
 //     this.votes.append(VoteId);

@@ -49,7 +49,7 @@ function dummytest(user, age, gender) {
         'email': 'imtiredandwanttosleep@fuckthis.ugh',
         'age': age,
         'gender': gender,
-        'intrest': '',
+        'interests': '',
         'zipcode': '07067'
     };
 

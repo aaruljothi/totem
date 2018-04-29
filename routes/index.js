@@ -19,7 +19,7 @@ router.get('/login', function (req, res, next) {
 //     res.render('newuser');
 // });
 
-router.get('/postblock', function(req, res, next) {
+router.get('/postblock', function (req, res, next) {
     res.render('postblock');
 });
 
@@ -35,7 +35,7 @@ router.get('/newPoll', function (req, res, next) {
 
 
 router.param('username', function (req, res, next, name) {
-    var query = User.findByIdAndRemove(name)
+    var query = User.findByName(name)
 
     query.exec(function (err, user) {
         if (err) { return next(err); }
@@ -50,10 +50,10 @@ router.get('/user/:username', function (req, res, next) {
 });
 
 router.get('/user/:username/posts', function (req, res, next) {
-    var query = Post.findbyAuthor(req.user.username);
-    query.exec(function(err, posts){
-        if(err){return next(err);}
-        req.user.posts = posts;
+    var query = Post.findByAuthor(req.user[0].username);
+    query.exec(function (err, posts) {
+        if (err) { return next(err); }
+        // req.user.posts = posts;
         res.json(req.user);
     })
     // req.user.populate('posts', function (err, user) {
@@ -62,10 +62,19 @@ router.get('/user/:username/posts', function (req, res, next) {
     // })
 });
 
-router.get('/user/:username/votes', function (req, res, next) {
-    var query = Comment.findbyAuthor(req.user.username);
-    query.exec(function(err, votes){
-        if(err){return next(err);}
+router.put('/user/:username/update', function(req, res, next){
+    var interests = req.body.interests; 
+    var usr = User(req.user[0]);
+    usr.updateInterests(interests, function(err, user){
+        if (err){return next(err);}
+        res.json(user);
+    })
+});
+
+router.get('/user/:username/comments', function (req, res, next) {
+    var query = Comment.findByAuthor(req.user[0].username);
+    query.exec(function (err, votes) {
+        if (err) { return next(err); }
         req.user.comments = comments;
         res.json(req.user);
     })
@@ -87,7 +96,6 @@ router.get('/posts', function (req, res, next) {
 
 router.post('/posts', function (req, res, next) {
     var post = new Post(req.body);
-    post.author = req.payload.username;
     post.save(function (err, post) {
         if (err) { return next(err); }
 
@@ -109,8 +117,8 @@ router.param('post', function (req, res, next, id) {
 
 router.get('/posts/:post', function (req, res, next) {
     var query = Comment.findByPost(req.post);
-    query.exec(function (err, comments){
-        if(err){return next(err)}
+    query.exec(function (err, comments) {
+        if (err) { return next(err) }
         req.post.comments = comments;
         res.json(req.post)
     })
@@ -121,19 +129,32 @@ router.get('/posts/:post', function (req, res, next) {
     // });
 });
 
+router.put('/posts/:post/update', function (req, res, next) {
+    var user_name = req.body.username;
+    var query = User.findByName(user_name);
+    query.exec(function (err, user) {
+        if (err) { return next(err); }
+        user = user[0];
+        var analytics = user.getAnalytics();
+        req.post.updateAnalytics(analytics, function (err, post) {
+            if (err) { next(err); }
+            res.json(post);
+        });
+    })
+})
+
 router.post('/posts/:post/comments', function (req, res, next) {
     var comment = new Comment(req.body);
     comment.post = req.post;
-    comment.author = req.payload.username;
     comment.save(function (err, comment) {
         if (err) { return next(err); }
 
-        req.post.comments.push(comment);
-        req.post.save(function (err, post) {
-            if (err) { return next(err); }
+        // req.post.comments.push(comment);
+        // req.post.save(function (err, post) {
+        // if (err) { return next(err); }
 
-            res.json(comment);
-        });
+        res.json(comment);
+        // });
     });
 });
 
@@ -156,14 +177,15 @@ router.get('/posts/:post/comments/:comment', function (req, res, next) {
 
 router.post('/register', function (req, res, next) {
 
-    var user = new User();
+    var user = new User(req.body);
 
-    user.username = req.body.username;
-    user.age = req.body.age;
-    user.gender = req.body.gender;
-    user.zipcode = req.body.zipcode;
+    // user.username = req.body.username;
+    // user.age = req.body.age;
+    // user.gender = req.body.gender;
+    // user.zipcode = req.body.zipcode;
     user.interests = '';
-    user.votes = []
+    // use
+    // user.votes = []
 
     user.save(function (err) {
         if (err) { return next(err); }
