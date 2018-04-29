@@ -163,7 +163,7 @@ router.post('/register', function (req, res, next) {
     user.gender = req.body.gender;
     user.zipcode = req.body.zipcode;
     user.interests = '';
-    user.votes = []
+    user.votes = [];
 
     user.save(function (err) {
         if (err) { return next(err); }
