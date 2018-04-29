@@ -1,57 +1,63 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Compiled and minified CSS -->
-    <!-- <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css"> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css">
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.js"
-      integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-      crossorigin="anonymous">
-    </script>
 
-  </head>
-  <body>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+</head>
 
-    <header>
-      <% include navbar.ejs %>
-    </header>
+<body>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
 
-    <h1>New Totem Poll</h1>
-
-    <h2>Input</h2>
-
-    <form class="ui form">
-      <div class="field">
-        <label>Title</label>
-        <input type="text" name="title" placeholder="title">
+  <% include navbar.ejs %>
+    <div class=" pusher">
+      <div class='ui middle aligned center aligned grid'>
+        <div class="column">
+          <h1 class='header my-header2'>New Totem Poll</h1>
+          <form class="ui form">
+            <div class="field">
+              <input id='poll_title' type="text" name="title" placeholder="title">
+            </div>
+            <div class="field">
+              <input id='poll_link' type="text" name="link" placeholder="link">
+            </div>
+            <div class="field">
+              <label>Attachment</label>
+              <input id="poll_doc" , type="file">
+            </div>
+            <div class="field">
+              <input id='poll_tags' type="text" placeholder="comma sep tags">
+            </div>
+            <h2 class="header my-header3">Responses</h2>
+            <div class='responseContainer'>
+              <div class="field">
+                <input class='resp' type="text" placeholder="response">
+              </div>
+              <div class="field">
+                <input class='resp' type="text" placeholder="response">
+              </div>
+            </div>
+            <div>
+              <button type='button' id='addRespButton' class="mag-top ui button large fluid custom-button3">Add Response</button>
+            </div>
+            <div>
+              <button type='button' id='formSubmit' class="mag-top ui button large fluid custom-button3">Submit</button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div class="field">
-        <label>Link</label>
-        <input type="text" name="link" placeholder="link">
-      </div>
+    </div>
 
-      <h2>Responses</h2>
-      <div class="field">
-        <label>Response1</label>
-        <input type="text" name="response1" placeholder="response1">
-      </div>
-      <div class="field">
-        <label>response2</label>
-        <input type="text" name="response2" placeholder="response2">
-      </div>
-      <div>
-        <button class="ui button" type="add_response">Add Response</button>
-      </div>
-      <div>
-        <button class="ui button" type="submit">Submit</button>
-      </div>
-    </form>
+    <script src="/javascripts/firebaseauth.js"></script>
+    <script src='/javascripts/newPoll.js'></script>
+    <script src='/javascripts/api.js'></script>
 
+</body>
 
-  </body>
 </html>
