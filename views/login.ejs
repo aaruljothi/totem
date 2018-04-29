@@ -13,7 +13,83 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
 </head>
 <body>
+    <div id="newusermodel" class="ui modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Profile Picture
+        </div>
+        <div class="image content">
+            <div class="ui medium image">
+                <!--<input type='file' onchange="readURL(this);" />-->
+                <script>
+                    function uploadimage(){
+                        console.log('upload image')
+                    }
+                </script>
+                <img class="ui medium circular image" onclick="uploadimage();" src="/images/square-image.png">
+            </div>
+            <div class="description">
+                <div class="ui header">Create Your Totem Login</div>
+                <form class="ui large form">
+                    <div class="ui stacked segment">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="email" id="email2" placeholder="E-mail address">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" id="password2" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" id="retypepassword2" placeholder="Retype Password">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="hourglass icon"></i>
+                                <input type="number" id="age" placeholder="Age">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <select id="agedropdown" class="ui dropdown">
+                                <option value="">Gender</option>
+                                <option value="0">Male</option>
+                                <option value="1">Female</option>
+                                <option value="2">Other</option>
+                            </select>
+                            <script>
+                                $('#agedropdown').dropdown();
+                            </script>
+                        </div>
 
+                        <script>
+                            function createnewuserclick(){
+                                if($('#password2').val() === $('#retypepassword2').val()){
+                                    firebase.auth().createUserWithEmailAndPassword($('#email2').val(), $('#password2').val()).catch(function(error) {
+                                        // Handle Errors here.
+                                        var errorCode = error.code;
+                                        var errorMessage = error.message;
+                                        // ...
+                                    });
+                                }
+                            }
+
+
+                        </script>
+                        <div class="ui fluid large teal submit button" onclick="createnewuserclick();">Login</div>
+                    </div>
+
+                    <div class="ui error message"></div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <div class="ui middle aligned center aligned grid">
         <div class="column">
@@ -39,11 +115,6 @@
                     </div>
                     <div class="ui fluid large teal submit button" id="login">Login</div>
                     <script>
-                        firebase.auth().onAuthStateChanged(function(user) {
-                            if (user) {
-                                console.log(user.uid);
-                            }
-                        });
 
                         $('#login').click(function(){
                             console.log($('#email1').val(), $('#password1').val());
@@ -62,8 +133,14 @@
 
             </form>
 
+            <script>
+                function newuserclick(){
+                    $('#newusermodel').modal('show');
+                }
+            </script>
+
             <div class="ui message">
-                New to us? <a href="#">Sign Up</a>
+                New to us? <a onclick="newuserclick();">Sign Up</a>
             </div>
         </div>
     </div>
