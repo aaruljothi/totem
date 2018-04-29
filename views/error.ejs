@@ -1,3 +1,45 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Compiled and minified CSS -->
+    <!-- <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css">
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.js"
+      integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+      crossorigin="anonymous">
+    </script>
+
+  </head>
+
+  <body>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/error.css' />
+
+
+    <div class="ui centered padded grid stackable">
+      <div class="six wide column grey">
+        <h1>Oops!</h1>
+        <h2><%= error.status %> <br><%= message %></h2>
+        <div class="error-details">
+           Somethings broken! Contact an administrator or get back to safety.
+        </div>
+        <div class="error-actions">
+            <!-- <a href="/" class="btn btn-lg btn-primary" >Take Me Home</a> -->
+            <a href="/" type="button" class=" ui button">Take Me Home</a>
+
+        </div>
+      </div>
+    </div>
+
+
+</body>
+<script>
+    console.log('<%= error.status %>');
+    console.log(`<%= error.stack %>`);
+</script>
+
+</html>
