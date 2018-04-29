@@ -2,12 +2,11 @@ function getFile(filePath) {
     return filePath.substr(filePath.lastIndexOf('\\') + 1).split('.')[0];
 }
 
-function getoutput() {
-    outputfile.value = getFile(inputfile.value);
-    extension.value = inputfile.value.split('.')[1];
+function getoutput(inputfile) {
+    return inputfile.value.split('.')[1];
 }
 
-function filetoblob(file, callback){
+function filetoblob(file, callback1){
     // Initialize an instance of the `FileReader`
         const reader = new FileReader();
 
@@ -17,7 +16,7 @@ function filetoblob(file, callback){
             // E.g. Send it to the cloud
             let result = e.target.result;
             console.log(result);
-            callback = result;
+            callback1 = result;
         };
 
     // Read the file

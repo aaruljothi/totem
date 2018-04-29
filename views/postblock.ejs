@@ -37,7 +37,10 @@
 
                }
 
-               $('.ui.dropdown').dropdown()
+
+                $('.ui.dropdown').change(function () {
+                    console.log($(this).find(":selected").val())
+                    });
             });
         });
     </script>

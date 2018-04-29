@@ -1,3 +1,8 @@
+Vue.component('feed', {
+
+});
+
+
 Vue.component('post', {
     template: '#post-template',
     data: function () {
