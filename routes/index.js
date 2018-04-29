@@ -41,6 +41,10 @@ router.get('/temp', function(req, res, next) {
     res.render('temp');
 });
 
+router.get('/mypost', function(req, res, next) {
+    res.render('mypost');
+});
+
 
 
 router.param('username', function (req, res, next, name) {
@@ -72,7 +76,7 @@ router.get('/user/:username/posts', function (req, res, next) {
 });
 
 router.put('/user/:username/update', function(req, res, next){
-    var interests = req.body.interests; 
+    var interests = req.body.interests;
     var usr = User(req.user[0]);
     usr.updateInterests(interests, function(err, user){
         if (err){return next(err);}
