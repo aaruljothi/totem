@@ -11,48 +11,42 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
 </head>
 <body>
-
-    <template id="post-template">
-        <div class="ui card">
-            <div class="content">
-                <a class="header">{{title}}</a>
-                <div class="meta">
-                    <span class="date">{{posttime}}</span>
-                </div>
-                <div class="description">{{description}}</div>
-            </div>
-            <div class="extra content">
-                <div class="ui selection dropdown" id="drop1">
-                    <input type="hidden" name="Options">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Options</div>
-                    <div class="menu">
-                        <div class="item" v-for="option in options" data-value="{{option}}">{{option}}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </template>
-
+<div class="ui grid stackable container" id="feed">
+    <div class="eight wide centered column" id="column2"></div>
+    <div class="eight wide centered column" id="column3"></div>
     <script>
         $(document).ready(function () {
-            $('.ui.dropdown').dropdown();
+
+            getPosts(function (posts) {
+
+               for(post in posts){
+
+                   var temphtml ='';
+                   for(opt in posts[post].voteOptions){
+
+                       temphtml = temphtml + '<div class="item" data-value=' + opt + '>' + posts[post].voteOptions[opt] + '</div>'
+                   }
+
+                   if (post%2 === 0){
+                       $('#column2').append('<div class="ui card centered column fluid"><div class="image"><img src="/images/square-image.png"></div><div class="content"><a class="header">'+ posts[post].title +'</a><div class="meta"><span class="date">' + posts[post].timestamp + '</span></div><div class="description">' + posts[post].tags + '</div></div><div class="extra content"><div class="ui selection dropdown"><input type="hidden" name="options"><i class="dropdown icon"></i><div class="default text">Options</div><div class="menu">' + temphtml + '</div></div></div></div>')
+                   }
+                   else
+                   {
+                       $('#column3').append('<div class="ui card centered column fluid"><div class="image"><img src="/images/square-image.png"></div><div class="content"><a class="header">'+ posts[post].title +'</a><div class="meta"><span class="date">' + posts[post].timestamp + '</span></div><div class="description">' + posts[post].tags + '</div></div><div class="extra content"><div class="ui selection dropdown"><input type="hidden" name="options"><i class="dropdown icon"></i><div class="default text">Options</div><div class="menu">' + temphtml + '</div></div></div></div>')
+                   }
+
+               }
+
+               $('.ui.dropdown').dropdown()
+            });
         });
     </script>
-    <script>
-        $(document).ready(function () {
-            getPosts(function (posts) {
-                console.log(posts)
-            })
+</div>
 
-        })
-    </script>
 
-    <div id="vue-app">
-        <post></post>
-    </div>
 
-    <script src="/javascripts/post.js"></script>
+
+
     <script src="/javascripts/api.js"></script>
 </body>
 </html>
