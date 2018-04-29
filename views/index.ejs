@@ -12,7 +12,10 @@
       integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
       crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src='/javascripts/dropdown.js'></script>
+
 
   </head>
   <body>
@@ -24,75 +27,90 @@
 
 
     <div class="ui grid stackable">
-      <div class="four wide column ">
+      <div class="five wide centered column ">
         <div class="ui card centered column">
+          <h4>Card1</h4>
           <div class="image">
             <img  src="/images/tom.gif">
           </div>
           <div class="extra content">
-            <div class="ui large transparent left icon input">
-              <i class="heart outline icon"></i>
-              <input type="text" placeholder="Add Comment...">
+            <div id="test-dropdown1" class="ui selection dropdown">
+              <script>$("test-dropdown1").dropdown();</script>
+              <input type="hidden" name="gender">
+              <i class="ui dropdown icon"></i>
+              <div class="default text">Response</div>
+              <div class="menu">
+                <div class="item" data-value="1">Yes</div>
+                <div class="item" data-value="0">No</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="four wide column ">
+      <div class="five wide centered column ">
         <div class="ui card centered column">
+          <h4>Card2</h4>
           <div class="image">
             <img  src="/images/tom.gif">
           </div>
           <div class="extra content">
-            <div class="ui large transparent left icon input">
-              <i class="heart outline icon"></i>
-              <input type="text" placeholder="Add Comment...">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="four wide column ">
-        <div class="ui card centered column">
-          <div class="image">
-            <img  src="/images/tom.gif">
-          </div>
-          <div class="extra content">
-            <div class="ui large transparent left icon input">
-              <i class="heart outline icon"></i>
-              <input type="text" placeholder="Add Comment...">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="four wide column ">
-        <div class="ui card centered column">
-          <div class="image">
-            <img  src="/images/tom.gif">
-          </div>
-          <div class="extra content">
-            <div class="ui large transparent left icon input">
-              <i class="heart outline icon"></i>
-              <input type="text" placeholder="Add Comment...">
+            <div id="test-dropdown2" class="ui selection dropdown">
+              <script>$("test-dropdown2").dropdown();</script>
+              <input type="hidden" name="gender">
+              <i class="ui dropdown icon"></i>
+              <div class="default text">Response</div>
+              <div class="menu">
+                <div class="item" data-value="1">Yes</div>
+                <div class="item" data-value="0">No</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="four wide column ">
+      <div class="five wide centered column ">
         <div class="ui card centered column">
+          <h4>Card3</h4>
           <div class="image">
             <img  src="/images/tom.gif">
           </div>
           <div class="extra content">
-            <div class="ui large transparent left icon input">
-              <i class="heart outline icon"></i>
-              <input type="text" placeholder="Add Comment...">
+            <div id="test-dropdown3" class="ui selection dropdown">
+              <script>$("test-dropdown3").dropdown();</script>
+              <input type="hidden" name="gender">
+              <i class="ui dropdown icon"></i>
+              <div class="default text">Response</div>
+              <div class="menu">
+                <div class="item" data-value="1">Yes</div>
+                <div class="item" data-value="0">No</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-
-
+      <div class="five wide centered column ">
+        <div class="ui card centered column">
+          <h4>Card4</h4>
+          <div class="image">
+            <img  src="/images/tom.gif">
+          </div>
+          <div class="extra content">
+            <div class="extra content">
+              <div id="test-dropdown4" class="ui selection dropdown">
+                <script>$("test-dropdown4").dropdown();</script>
+                <input type="hidden" name="gender">
+                <i class="ui dropdown icon"></i>
+                <div class="default text">Response</div>
+                <div class="menu">
+                  <div class="item" data-value="1">Yes</div>
+                  <div class="item" data-value="0">No</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
