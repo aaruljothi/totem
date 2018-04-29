@@ -32,6 +32,10 @@ router.get('/newPoll', function (req, res, next) {
 });
 
 
+router.get('/history', function(req, res, next) {
+    res.render('history');
+});
+
 
 
 router.param('username', function (req, res, next, name) {
