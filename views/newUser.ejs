@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Compiled and minified CSS -->
+    <!-- <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css">
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.js"
+      integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+      crossorigin="anonymous">
+    </script>
+
+
+  </head>
+  <body>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel='stylesheet' href='/stylesheets/form.css'/>
+
+    <header>
+      <% include navbar.ejs %>
+    </header>
+
+    <h1>New User</h1>
+
+
+    <form class="form-style-7">
+      <ul>
+      <li>
+          <label for="age">Age</label>
+          <input type="number" name="age" max="150" min="0">
+          <span>Enter your age</span>
+      </li>
+      <li>
+          <label for="gender">Gender</label>
+          <input type="text" name="gender" maxlength="100">
+          <span>Enter your gender</span>
+      </li>
+      <li>
+          <input type="submit" value="Send This" >
+      </li>
+      </ul>
+    </form>
+
+  </body>
+  <script src='/javascripts/forms.js'></script>
+</html>
