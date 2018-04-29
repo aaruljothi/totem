@@ -15,12 +15,13 @@ router.get('/login', function (req, res, next) {
 });
 
 
-router.get('/newuser', function(req, res, next) {
-    res.render('newuser');
-});
+// router.get('/newuser', function(req, res, next) {
+//     res.render('newuser');
+// });
 
 router.get('/postblock', function(req, res, next) {
     res.render('postblock');
+});
 
 router.get('/preferences', function (req, res, next) {
     res.render('preferences');
@@ -42,11 +43,11 @@ router.param('username', function (req, res, next, name) {
         req.user = user;
         return next();
     })
-})
+});
 
 router.get('/user/:username', function (req, res, next) {
     res.json(req.user);
-})
+});
 
 router.get('/user/:username/posts', function (req, res, next) {
     var query = Post.findbyAuthor(req.user.username);
@@ -59,7 +60,7 @@ router.get('/user/:username/posts', function (req, res, next) {
     //     if (err) { return next(err); }
     //     res.json(user);
     // })
-})
+});
 
 router.get('/user/:username/votes', function (req, res, next) {
     var query = Comment.findbyAuthor(req.user.username);
@@ -72,7 +73,7 @@ router.get('/user/:username/votes', function (req, res, next) {
     //     if (err) { return next(err); }
     //     res.json(user);
     // })
-})
+});
 
 // router.get('/user/:u')
 
