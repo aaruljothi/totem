@@ -7,7 +7,7 @@ var User = mongoose.model('User');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('postblock', { title: 'Express' });
+    res.render('login', { title: 'Express' });
 });
 
 router.get('/landing', function (req, res, next) {
@@ -29,6 +29,10 @@ router.get('/preferences', function (req, res, next) {
 
 router.get('/newPoll', function (req, res, next) {
     res.render('newPoll');
+});
+
+router.get('/mypost', function (req, res, next) {
+    res.render('mypost');
 });
 
 
