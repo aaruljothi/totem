@@ -1,16 +1,24 @@
+<div class="ui fixed inverted menu">
+  <div class="ui container">
 
-<nav class="navbar navbar-expand-lg navbar-dark accentColor justify-content-between" style='display:none'>
-  <div class='container d-flex justify-content-between'>
-    <a href='#' style='color:white'class="navbar-brand secondaryTextColor" onclick="goCover()">Aerial Spectrum Mapping</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-      <div class="navbar-nav" >
-        <a href='#' id='ProjectLink' class="nav-item nav-link secondaryTextColor active" onclick="showProject()">project</a>
-        <a href='#' id='TeamLink' class="nav-item nav-link secondaryTextColor" onclick="showTeam()">team</a>
-        <a href='#' id='SponsorLink' class="nav-item nav-link secondaryTextColor" onclick='showSponsor()'>design</a>
+
+      <a href="/" class="header item">Totem Poll</a>
+      <a href="/" class="item">Home</a>
+      <a href="/newPoll" class="item">New Poll</a>
+      <div class="right item">
+        <div class="ui fluid search selection dropdown">
+          <input type="hidden" name="country">
+          <i class="dropdown icon"></i>
+          <div class="default text">Select Country</div>
+          <div class="menu">
+          <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+          <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+          <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+          <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+          <div class="item" data-value="as"><i class="as flag"></i>American Samoa</div>
+          </div>
+        </div>
       </div>
+
     </div>
-  </div>
-</nav>
+</div>
