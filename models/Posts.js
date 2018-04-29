@@ -50,7 +50,7 @@ PostSchema.methods.updateAnalytics = function(user_analytics, cb){
         prev_analytics[3] = prev_analytics[3].join(',');
         prev_analytics[4] = prev_analytics[4].split(',')
         prev_analytics[4].push(usr_analytics[4])
-        prev_analytics[4].join(',');
+        prev_analytics[4] = prev_analytics[4].join(',');
         console.log(prev_analytics.join(','));
         this.analytics = prev_analytics.join('|')
     }
