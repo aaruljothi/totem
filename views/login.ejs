@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Login2</title>
@@ -8,28 +7,25 @@
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="/javascripts/firebaseauth.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/particle.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
+
 <body>
+    <div id="particles-js"></div>
     <div id="newusermodel" class="ui modal">
         <i class="close icon"></i>
-        <div class="header">
-            Profile Picture
-        </div>
         <div class="image content">
-            <div class="ui medium image">
-                <!--<input type='file' onchange="readURL(this);" />-->
-                <script>
-                    function uploadimage(){
-                        console.log('upload image')
-                    }
-                </script>
+            <!-- <div class="ui medium image">
+                <input type='file' onchange="readURL(this);" />
                 <img class="ui medium circular image" onclick="uploadimage();" src="/images/square-image.png">
-            </div>
+            </div> -->
             <div class="description">
-                <div class="ui header">Create Your Totem Login</div>
+                <div class="ui header my-header center aligned">Create Your Totem Login</div>
                 <form class="ui large form">
                     <div class="ui stacked segment">
                         <div class="field">
@@ -63,26 +59,8 @@
                                 <option value="1">Female</option>
                                 <option value="2">Other</option>
                             </select>
-                            <script>
-                                $('#agedropdown').dropdown();
-                            </script>
                         </div>
-
-                        <script>
-                            function createnewuserclick(){
-                                if($('#password2').val() === $('#retypepassword2').val()){
-                                    firebase.auth().createUserWithEmailAndPassword($('#email2').val(), $('#password2').val()).catch(function(error) {
-                                        // Handle Errors here.
-                                        var errorCode = error.code;
-                                        var errorMessage = error.message;
-                                        // ...
-                                    });
-                                }
-                            }
-
-
-                        </script>
-                        <div class="ui fluid large teal submit button" onclick="createnewuserclick();">Login</div>
+                        <div class="ui fluid large submit button custom-button" onclick="createnewuserclick();">Login</div>
                     </div>
 
                     <div class="ui error message"></div>
@@ -90,63 +68,41 @@
             </div>
         </div>
     </div>
-
-    <div class="ui container">
-        <div class="ui middle aligned center aligned grid">
-            <div class="column">
-                <h2 class="ui teal image header">
-                    <img src="/images/logo.png" class="image">
-                    <div class="content">
-                        Log-in to your account
-                    </div>
-                </h2>
-                <form class="ui large form">
-                    <div class="ui stacked segment">
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <i class="user icon"></i>
-                                <input type="text" id="email1" placeholder="E-mail address">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <i class="lock icon"></i>
-                                <input id="password1" type="password" placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="ui fluid large teal submit button" id="login">Login</div>
-                        <script>
-
-                            $('#login').click(function(){
-                                console.log($('#email1').val(), $('#password1').val());
-                                firebase.auth().signInWithEmailAndPassword($('#email1').val(), $('#password1').val()).catch(function(error) {
-                                    // Handle Errors here.
-                                    var errorCode = error.code;
-                                    var errorMessage = error.message;
-                                    console.log(errorCode, errorMessage);
-                                    // ...
-                                });
-                            })
-                        </script>
-                    </div>
-
-                    <div class="ui error message"></div>
-
-                </form>
-
-                <script>
-                    function newuserclick(){
-                        $('#newusermodel').modal('show');
-                    }
-                </script>
-
-                <div class="ui message">
-                    New to us? <a onclick="newuserclick();">Sign Up</a>
+    <!-- <div class="text"> -->
+    <div class="ui middle aligned center aligned grid">
+        <div class="column">
+            <h2 class="ui image my-header header">
+                <img src="/images/Logo.png" class="image">
+                <div class="content">
+                    Log-in to your account
                 </div>
-            </div>
+            </h2>
+            <form class="ui large form">
+                <div class="ui stacked segment">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" id="email1" placeholder="E-mail address">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input id="password1" type="password" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="ui fluid large submit custom-button button" id="login">Login</div>
+                </div>
+                <div class="ui error message"></div>
+            </form>
+            <div class='button fluid ui large custom-button2' onclick="newuserclick();">Sign Up</div>
+            <a class='button fluid ui large custom-button2' href='/info'>Find out more!</a>
         </div>
     </div>
+    <!-- </div> -->
 
-
+    <script src="/javascripts/particles.js"></script>
+    <script src="/javascripts/login.js"></script>
 </body>
+
 </html>

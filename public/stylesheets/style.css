@@ -1,8 +1,72 @@
+:root {
+  --main-bg-color: #131623;
+  --blue-custom: #027BBC;
+  --yellow-custom: #F3C100;
+  --red-custom: #970101;
+  --green-custom: #27946A;
+  --white-custom: #EAEBEF;
+  --black-custom: #09000E;
+}
+
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #131623;
 }
 
 a {
-  color: #00B7FF;
+  color: var(--blue-custom);
 }
+
+
+body > .grid {
+  height: 100%;
+}
+.image {
+  margin-top: -100px;
+}
+.column {
+  max-width: 450px;
+}
+
+.custom-button {
+  background: transparent !important;
+  border: 2px solid var(--yellow-custom) !important;
+  color: var(--yellow-custom) !important;
+}
+
+.custom-button:hover{
+  background: var(--yellow-custom) !important;
+  color: var(--white-custom) !important;
+  border: 2px solid var(--yellow-custom) !important;
+}
+
+.custom-button2:hover {
+  background: transparent !important;
+  border: 2px solid var(--blue-custom) !important;
+  color: var(--blue-custom) !important;
+}
+
+.custom-button2{
+  background: var(--blue-custom) !important;
+  color: var(--white-custom) !important;
+  border: 2px solid var(--blue-custom) !important;
+}
+
+.custom-button3:hover {
+  background: transparent !important;
+  border: 2px solid var(--green-custom) !important;
+  color: var(--green-custom) !important;
+}
+
+.custom-button2{
+  background: var(--green-custom) !important;
+  color: var(--white-custom) !important;
+  border: 2px solid var(--green-custom) !important;
+}
+
+.my-header {
+  color: var(--green-custom) !important;
+}
+

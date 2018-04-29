@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
     res.render('index', { title: 'Express' });
 });
 
-router.get('/login', function (req, res, next) {
+router.get('/landing', function (req, res, next) {
     res.render('login');
 });
 
@@ -34,6 +34,11 @@ router.get('/newPoll', function (req, res, next) {
 
 router.get('/history', function(req, res, next) {
     res.render('history');
+});
+
+
+router.get('/temp', function(req, res, next) {
+    res.render('temp');
 });
 
 
