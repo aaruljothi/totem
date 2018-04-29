@@ -1,7 +1,7 @@
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyAOnOqleoQP9zJYmHFohDjIEIfZ1o8H1yI",
-    authDomain: "totem-umbc.firebaseapp.com",
+    authDomain: "totempoll.net",
     databaseURL: "https://totem-umbc.firebaseio.com",
     projectId: "totem-umbc",
     storageBucket: "totem-umbc.appspot.com",
