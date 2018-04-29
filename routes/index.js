@@ -10,4 +10,12 @@ router.get('/login', function(req, res, next) {
     res.render('login');
 });
 
+router.get('/newuser', function(req, res, next) {
+    res.render('newuser');
+});
+
+router.get('/postblock', function(req, res, next) {
+    res.render('postblock');
+});
+
 module.exports = router;
