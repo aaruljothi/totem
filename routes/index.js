@@ -37,6 +37,11 @@ router.get('/history', function(req, res, next) {
 });
 
 
+router.get('/temp', function(req, res, next) {
+    res.render('temp');
+});
+
+
 
 router.param('username', function (req, res, next, name) {
     var query = User.findByName(name)
