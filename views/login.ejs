@@ -5,6 +5,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script src="/javascripts/api.js"></script>
     <script src="/javascripts/firebaseauth.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
@@ -27,7 +28,7 @@
             <div class="description">
                 <div class="ui header my-header center aligned">Create Your Totem Login</div>
                 <form class="ui large form">
-                    <div class="ui stacked segment">
+                    <div class="ui segment">
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="user icon"></i>
@@ -53,7 +54,7 @@
                             </div>
                         </div>
                         <div class="field">
-                            <select id="agedropdown" class="ui dropdown">
+                            <select id="gendropdown" class="ui dropdown">
                                 <option value="">Gender</option>
                                 <option value="0">Male</option>
                                 <option value="1">Female</option>
@@ -96,7 +97,7 @@
                 <div class="ui error message"></div>
             </form>
             <div class='button fluid ui large custom-button2' onclick="newuserclick();">Sign Up</div>
-            <a class='button fluid ui large custom-button2' href='/info'>Find out more!</a>
+            <a class='button mag-top fluid ui large custom-button2' href='/info'>Find out more!</a>
         </div>
     </div>
     <!-- </div> -->

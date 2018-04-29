@@ -1,27 +1,4 @@
 
-function dummytest(user, age, gender) {
-    var userobject = {
-        'username': 'G7fRT3D22HQ',
-        'email': 'imtiredandwanttosleep@fuckthis.ugh',
-        'age': age,
-        'gender': gender,
-        'intrest': '',
-        'zipcode': '07067'
-    };
-
-    $.ajax({
-        type: "POST",
-        url: "/register",
-        // The key needs to match your method's input parameter (case-sensitive).
-        data: JSON.stringify(userobject),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: gottotribepage(),
-        failure: function (errMsg) {
-            alert(errMsg);
-        }
-    });
-}
 
 function updateInterests(username, interests, cb) {
     interests = interests.join(',');
@@ -40,7 +17,7 @@ function updateInterests(username, interests, cb) {
     })
 }
 
-function updatePost(postid, username, cb) {
+function updatePoll(postid, username, cb) {
     username = {
         username:username
     }
@@ -55,7 +32,7 @@ function updatePost(postid, username, cb) {
     })
 }
 
-function getCommentByPostCommentIds(postid, commentid, cb) {
+function getCommentByPollCommentIds(postid, commentid, cb) {
     $.ajax({
         type: "GET",
         url: "/posts/" + postid + "/comments/" + commentid,
@@ -66,7 +43,7 @@ function getCommentByPostCommentIds(postid, commentid, cb) {
     })
 }
 
-function getPostById(postid, cb) {
+function getPollById(postid, cb) {
     $.ajax({
         type: "GET",
         url: "/posts/" + postid,
@@ -99,7 +76,7 @@ function getUserByUsername(username, cb) {
     })
 }
 
-function getPostsByUsername(username, cb) {
+function getPollByUsername(username, cb) {
     $.ajax({
         type: "GET",
         url: "/user/" + username + "/posts",
@@ -110,7 +87,7 @@ function getPostsByUsername(username, cb) {
     })
 }
 
-function getPosts(cb) {
+function getPoll(cb) {
     $.ajax({
         type: "GET",
         url: "/posts",
@@ -150,7 +127,7 @@ function addComment(postid, comment, cb) {
     });
 }
 
-function makePost(uname, title, doc, docType, vOps, tags) {
+function makePoll(uname, title, doc, docType, vOps, tags) {
     tNow = new Date();
     timestamp = tNow.toGMTString().split(',')[1];
     var pObject = {
@@ -165,7 +142,7 @@ function makePost(uname, title, doc, docType, vOps, tags) {
     return pObject;
 }
 
-function addPost(post, cb) {
+function addPoll(post, cb) {
     $.ajax({
         type: "POST",
         url: "/posts",

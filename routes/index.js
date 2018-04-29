@@ -155,16 +155,21 @@ router.put('/posts/:post/update', function (req, res, next) {
 router.post('/posts/:post/comments', function (req, res, next) {
     var comment = new Comment(req.body);
     comment.post = req.post;
-    comment.save(function (err, comment) {
+    var user_name = comment.author;
+    var query = User.findByName(user_name);
+    query.exec(function (err, user) {
         if (err) { return next(err); }
-
-        // req.post.comments.push(comment);
-        // req.post.save(function (err, post) {
-        // if (err) { return next(err); }
-
-        res.json(comment);
-        // });
-    });
+        user = user[0];
+        var analytics = user.getAnalytics();
+        analytics = analytics + ',' + comment.vote;
+        req.post.updateAnalytics(analytics, function (err, post) {
+            if (err) { next(err); }
+            comment.save(function (err, comment) {
+                if (err) { return next(err); }
+                res.json(comment);
+            });
+        });
+    })
 });
 
 router.param('comment', function (req, res, next, id) {

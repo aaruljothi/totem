@@ -1,7 +1,7 @@
 :root {
   --main-bg-color: #131623;
   --blue-custom: #027BBC;
-  --yellow-custom: #F3C100;
+  --yellow-custom: rgb(214, 173, 8);
   --red-custom: #970101;
   --green-custom: #27946A;
   --white-custom: #EAEBEF;
@@ -12,6 +12,10 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #131623;
+}
+
+body.pushable>.pusher {
   background: #131623;
 }
 
@@ -60,7 +64,7 @@ body > .grid {
   color: var(--green-custom) !important;
 }
 
-.custom-button2{
+.custom-button3{
   background: var(--green-custom) !important;
   color: var(--white-custom) !important;
   border: 2px solid var(--green-custom) !important;
@@ -70,3 +74,14 @@ body > .grid {
   color: var(--green-custom) !important;
 }
 
+.my-header2 {
+  color: var(--blue-custom) !important;
+}
+
+.my-header3 {
+  color: var(--yellow-custom) !important;
+}
+
+.mag-top {
+  margin-top: 2rem !important; 
+}

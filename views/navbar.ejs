@@ -1,13 +1,50 @@
-<div class="ui fixed inverted menu">
-  <div class="ui container">
-
-      <img src="/images/logo.png" class="centered" width="48" height="24" align="middle" vspace="10px">
-      <a href="/" class="item">Home</a>
-      <a href="/newPoll" class="item">New Poll</a>
-      <a href="/history" class="item">History</a>
-      <div class="right item">
-
-      </div>
-
+<div class='ui sticky stickyTop'>
+  <div class="ui inverted segment">
+    <div class="ui inverted menu" style="margin-bottom:20px">
+      <button id="left-sidebar-toggle">
+        show sidebar
+      </button>
     </div>
+  </div>
 </div>
+
+<div class="ui left demo vertical inverted sidebar labeled icon menu">
+
+  <a class="item" href="/">
+    <i class="home icon"></i>
+    Home
+  </a>
+  <a class="item" href="/mypost">
+    <i class="block layout icon"></i>
+    My Posts
+  </a>
+  <a class="item" href="/newpoll">
+    <i class="plus square icon"></i>
+    New Post
+  </a>
+  <a class="item" href="/history">
+    <i class="history icon"></i>
+    History
+  </a>
+
+</div>
+
+
+<script>
+
+  // $('.ui.left.sidebar').sidebar({
+  //   dimPage: false,
+  //   // transition: 'pusher',
+  //   // exclusive: false,
+  //   closable: true
+  // });
+
+  $('#left-sidebar-toggle').click(function () {
+    $('.ui.labeled.icon.sidebar')
+      .sidebar('setting', 'transition', 'overlay')
+      .sidebar('setting', 'dimPage', false)
+      .sidebar('toggle');
+  });
+
+
+</script>

@@ -10,68 +10,25 @@ var config = {
 firebase.initializeApp(config);
 
 function gottotribepage(){
-    window.location.href = "http://www.google.com";
+    window.location.href = "/";
 }
 
-firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        gottotribepage()
-    }
-});
+
 
 function addnewuser(user, age, gender) {
-    var userobject = {
-        'username': user.uid,
-        'email': user.email,
-        'age': age,
-        'gender': gender,
-        'intrest': '',
-        'zipcode': '07067'
-    };
-
-    $.ajax({
-        type: "POST",
-        url: "/register",
-        // The key needs to match your method's input parameter (case-sensitive).
-        data: JSON.stringify(userobject),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: gottotribepage(),
-        failure: function(errMsg) {
-            alert(errMsg);
-        }
+    addUser(makeUser(user.uid,user.email,age,gender,'07067'), function(){
+        gottotribepage();
     });
 }
 
 function isUserLoggedIn(){
     var user = firebase.auth().currentUser;
 
-    return !!user;
-}
-
-
-function dummytest(user, age, gender) {
-    var userobject = {
-        'username': 'G7fRT3D22HQ',
-        'email': 'imtiredandwanttosleep@fuckthis.ugh',
-        'age': age,
-        'gender': gender,
-        'interests': '',
-        'zipcode': '07067'
-    };
-
-    $.ajax({
-        type: "POST",
-        url: "/register",
-        // The key needs to match your method's input parameter (case-sensitive).
-        data: JSON.stringify(userobject),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: gottotribepage(),
-        failure: function(errMsg) {
-            alert(errMsg);
-        }
-    });
+    if (!!user == false){
+        return false;
+    }else{
+        return user.uid;
+    }
 }
 
 
