@@ -158,7 +158,7 @@ function makePost(uname, title, doc, docType, vOps, tags) {
         'title': title,
         'doc': doc,
         'docType': docType,
-        'voteOptions': vOps,
+        'voteOptions': vOps, 
         'tags': tags,
         'timestamp': timestamp,
     }

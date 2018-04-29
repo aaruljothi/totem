@@ -54,6 +54,18 @@ body > .grid {
   border: 2px solid var(--blue-custom) !important;
 }
 
+.custom-button3:hover {
+  background: transparent !important;
+  border: 2px solid var(--green-custom) !important;
+  color: var(--green-custom) !important;
+}
+
+.custom-button2{
+  background: var(--green-custom) !important;
+  color: var(--white-custom) !important;
+  border: 2px solid var(--green-custom) !important;
+}
+
 .my-header {
   color: var(--green-custom) !important;
 }
